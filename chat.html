@@ -1,0 +1,90 @@
+
+<!doctype html>
+<html>
+<head>
+<title>chat</title>
+<meta charset="utf-8">
+<style>
+textarea{
+  width: 1150px;
+  height: 520px;
+  color: blue;
+}
+input{
+  width: 1095px;
+  color: blue;
+}
+button{
+  width: 45px;
+}
+</style>
+</head>
+<body>
+<script>
+var r0_1= /^(.*)(are you)(.*)$/ ;
+var r1_1= /^(.*)(happy|exciting)(.*)$/ ;
+var r1_2= /^(.*)(sad|angry)(.*)$/ ;
+var r1_3= /^(.*)(ill|(.*)ache)(.*)$/ ;
+var r2_1= /^(.*)(like|dislike|hate|love)(.*)$/ ;
+var r2_2= /^(.*)(don't|can't|cannot)(.*)$/ ;
+var r3_1= /^(.*)(because|reason)(.*)$/ ;
+var r3_2= /^(.*)(yes|no|yeah|ok)(.*)$/ ;
+var r4_1= /^(.*)\?$/ ;
+var r5_1= /^(.*)$/ ;
+function rand(){
+  return Math.floor(Math.random()+0.5);
+}
+function ret(s){
+  if(s.match(r0_1)){
+    return "we should talk more about you,not me.";
+  }
+  if(s.match(r1_1)){
+    if(rand()) return "why?";
+    else return "why do you say that?";
+  }
+  if(s.match(r1_2)){
+    if(rand()) return "why?";
+    else return "what is wrong?";
+  }
+  if(s.match(r1_3)){
+    return "i am sorry to hear that.";
+  }
+  if(s.match(r2_1)){
+    if(rand()) return "why?";
+    else return "why do you say that?";
+  }
+  if(s.match(r2_2)){
+    if(rand()) return "why?";
+    else return "why do you say that?";
+  }
+  if(s.match(r3_1)){
+    if(rand()) return "are you sure?";
+    else return "is that the real reason?";
+  }
+  if(s.match(r3_2)){
+    if(rand()) return "ok.";
+    else return "i see.";
+  }
+  if(s.match(r4_1)){
+    if(rand()) return "perhaps you know the answer?";
+    else return "can you repeat that?";
+  }
+  if(s.match(r5_1)){
+    if(rand()) return "i see.";
+    else if(rand()) return "\""+s+"\"?";
+    else if(rand()) return "!?";
+    else if(rand()) return "then?";
+    else if(rand()) return "What do you mean?";
+    else return "goodbye!";
+  }
+}
+function send(){
+  document.getElementById('show').value+="\n"+document.getElementById('msg').value+"\n"+ret(document.getElementById('msg').value);
+  document.getElementById('msg').value="";
+}
+</script>
+<textarea readonly id="show">hello,i'm your friend now! how are you today?</textarea><br>
+<input type="text" id="msg">
+<button onclick="send()">Send</button>
+</body>
+</html>
